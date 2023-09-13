@@ -25,23 +25,20 @@ app.get('/api/hello', function (req, res) {
   res.json({ greeting: 'hello API' });
 });
 
-// const getip=()=>
-// {
-//   let ipp;
-//   fetch('https://api64.ipify.org')
-//   .then((res)=>res.text())
-//   .then(ip=> console.log(ip))
-//   .then(ip=> ipp=ip)
-//   return ipp;
-// }
-// ip=getip();
-// console.log(ip)
-
-
+// const lang=window.navigator.language;
+// console.log(lang);
 app.get('/api/whoami',(req,res)=>{
   const ip = req.ip;
   console.log(ip);
-  res.json({ipaddress:ip})
+  const lang = req.headers['accept-language'];
+  console.log(lang);
+  const soft=req.headers['user-agent'];
+  res.json({ipaddress:ip,language:lang,software:soft})
+  // res.json({ipaddress:ip,software:soft})
+});
+
+app.get('/req', function (req, res) {
+  res.send(req.headers['user-agent']);
 });
 
 // listen for requests :)
