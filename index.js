@@ -41,7 +41,7 @@ app.get('/api/hello', function (req, res) {
 app.get('/api/whoami',(req,res)=>{
   const ip = req.ip;
   console.log(ip);
-  res.json({ip})
+  res.json({ipaddress:ip})
 });
 
 // listen for requests :)
